@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply bg-[#f8f9fa] p-3 rounded-md ring-gray-200 text-sm text-gray-800 hover: ring-1 focus:outline-none active:ring-gray-300 hover:shadow-md;
+    }
+
+    .link {
+        @apply hover: underline cursor-pointer
+    }
+     .icon {
+         @apply hidden xl:inline-flex p-2 h-10 w-10 bg-gray-200 rounded-full text-gray-700 cursor-pointer hover:bg-gray-300;
+     }
+
+     .inputIcon {
+         @apply flex items-center space-x-1 hover:bg-gray-100 flex-grow justify-center p-2 rounded-xl cursor-pointer;
+     }
+
+}
