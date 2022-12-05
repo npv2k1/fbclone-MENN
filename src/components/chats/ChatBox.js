@@ -1,15 +1,8 @@
-import InputBox from "../Feed/InputBox";
-import Posts from "../Feed/Posts";
-import Stories from "../Feed/Stories";
-import { ChevronRightIcon } from "@heroicons/react/solid";
 import { useSession } from "next-auth/client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { db } from "../../firebase";
-import firebase from "firebase/app";
-import { useCollection } from "react-firebase-hooks/firestore";
-import Chat from "./Chat";
 import { io } from "socket.io-client";
+import Chat from "./Chat";
 const socket = io("localhost:3000", { transports: ["websocket"] });
 
 function ChatBox({ id }) {
@@ -55,12 +48,12 @@ function ChatBox({ id }) {
     scrollToBottom();
   }, [mess]);
   return (
-    <div className="flex flex-1 flex-col border-l-2 border-r-2 bg-white">
+    <div className="flex flex-col flex-1 bg-white border-l-2 border-r-2">
       {/* Chat message */}
       <div className="flex flex-1 bg-white">
         <div
           ref={commentsRef}
-          className="flex flex-col w-full space-y-3  overflow-y-auto h-0 min-h-full px-10"
+          className="flex flex-col w-full h-0 min-h-full px-10 space-y-3 overflow-y-auto"
         >
           {mess.map((message) => (
             <Chat
@@ -74,7 +67,7 @@ function ChatBox({ id }) {
         </div>
       </div>
       {/* Input */}
-      <div className="flex px-10 py-3 space-x-2 items-center shadow-sm">
+      <div className="flex items-center px-10 py-3 space-x-2 shadow-sm">
         <Image
           src={session.user.image}
           width={40}
@@ -86,7 +79,7 @@ function ChatBox({ id }) {
         <form className="flex flex-1">
           <input
             ref={inputRef}
-            className="rounded-full flex-grow focus:outline-none border bg-gray-100 p-2"
+            className="flex-grow p-2 bg-gray-100 border rounded-full focus:outline-none"
             type="text"
             placeholder="Enter chat..."
           />
@@ -96,7 +89,7 @@ function ChatBox({ id }) {
         </form>
         <div
           onClick={sendMessage}
-          className="flex h-10 w-10 rounded-full text-blue-500 hover:bg-gray-200 justify-center items-center"
+          className="flex items-center justify-center w-10 h-10 text-blue-500 rounded-full hover:bg-gray-200"
         >
           <i className="fal fa-paper-plane fa-lg"></i>
         </div>
