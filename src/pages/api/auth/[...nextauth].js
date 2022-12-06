@@ -1,7 +1,6 @@
 import axios from "axios";
 import NextAuth from "next-auth";
 import Providers from "next-auth/providers";
-import { countDocuments } from "../../../../server/model/User";
 
 export default NextAuth({
   // Configure one or more authentication providers

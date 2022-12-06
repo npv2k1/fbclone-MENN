@@ -6,8 +6,18 @@ import {
   ArrowCircleRightIcon,
 } from "@heroicons/react/solid";
 import { useEffect, useRef, useState } from "react";
-import MenuItem from "./MenuItem";
 import { useRouter } from "next/router";
+
+
+
+function MenuItem({ Icon, text }) {
+  return (
+    <div className="flex items-center justify-start space-x-2 hover:bg-gray-200 rounded-lg p-3">
+      <i className={Icon}></i>
+      <p className="text-lg sm:text-lg xl:text-2xl">{text}</p>
+    </div>
+  );
+}
 function DropdownMenu({ active, changeActive }) {
    const router = useRouter();
   const [menu, setMenu] = useState("menu");
